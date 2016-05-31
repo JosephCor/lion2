@@ -1,11 +1,11 @@
-#include "StorkApp.h"
+#include "Lion2App.h"
 #include "Moose.h"
 #include "AppFactory.h"
 #include "ModulesApp.h"
 #include "MooseSyntax.h"
 
 template<>
-InputParameters validParams<StorkApp>()
+InputParameters validParams<Lion2App>()
 {
   InputParameters params = validParams<MooseApp>();
 
@@ -16,40 +16,40 @@ InputParameters validParams<StorkApp>()
   return params;
 }
 
-StorkApp::StorkApp(InputParameters parameters) :
+Lion2App::Lion2App(InputParameters parameters) :
     MooseApp(parameters)
 {
   Moose::registerObjects(_factory);
   ModulesApp::registerObjects(_factory);
-  StorkApp::registerObjects(_factory);
+  Lion2App::registerObjects(_factory);
 
   Moose::associateSyntax(_syntax, _action_factory);
   ModulesApp::associateSyntax(_syntax, _action_factory);
-  StorkApp::associateSyntax(_syntax, _action_factory);
+  Lion2App::associateSyntax(_syntax, _action_factory);
 }
 
-StorkApp::~StorkApp()
+Lion2App::~Lion2App()
 {
 }
 
 // External entry point for dynamic application loading
-extern "C" void StorkApp__registerApps() { StorkApp::registerApps(); }
+extern "C" void Lion2App__registerApps() { Lion2App::registerApps(); }
 void
-StorkApp::registerApps()
+Lion2App::registerApps()
 {
-  registerApp(StorkApp);
+  registerApp(Lion2App);
 }
 
 // External entry point for dynamic object registration
-extern "C" void StorkApp__registerObjects(Factory & factory) { StorkApp::registerObjects(factory); }
+extern "C" void Lion2App__registerObjects(Factory & factory) { Lion2App::registerObjects(factory); }
 void
-StorkApp::registerObjects(Factory & factory)
+Lion2App::registerObjects(Factory & factory)
 {
 }
 
 // External entry point for dynamic syntax association
-extern "C" void StorkApp__associateSyntax(Syntax & syntax, ActionFactory & action_factory) { StorkApp::associateSyntax(syntax, action_factory); }
+extern "C" void Lion2App__associateSyntax(Syntax & syntax, ActionFactory & action_factory) { Lion2App::associateSyntax(syntax, action_factory); }
 void
-StorkApp::associateSyntax(Syntax & /*syntax*/, ActionFactory & /*action_factory*/)
+Lion2App::associateSyntax(Syntax & /*syntax*/, ActionFactory & /*action_factory*/)
 {
 }
